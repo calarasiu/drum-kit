@@ -2,11 +2,41 @@
 <html>
   <head>
     <title>Drum kit</title>
-    <link rel="stylesheet" href="style.css" type="text/stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
   </head>
 
   <body>
-    
-    
+    <div class="keys">
+      <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <div><span class="sound">clap</span></div>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <div><span class="sound">hihat</span></div>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <div><span class="sound">kick</span></div>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <div><span class="sound">ride</span></div>
+      </div>
+    </div>
+    <audio data-key="65" src= "sounds/claps.wav"></audio>
+    <audio data-key="83" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" src="sounds/KICk.wav"></audio>
+    <audio data-key="70" src="sounds/ride.wav"></audio>
+    <script type="text/javascript">
+      window.addEventListener('keydown',function(e){
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if(!audio) return; // STOP THE FUNCTION FROM RUNNING IF THERE IS NOT AUDIO ELEMENT FOR THE PRESSED KEY
+        audio.play();
+        audio.currentTime = 0; //is going to rewind to the start
+        key.classList.toggle("playing");
+      });
+    </script>
   </body>
 </html>
