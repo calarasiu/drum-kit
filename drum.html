@@ -28,15 +28,7 @@
     <audio data-key="83" src="sounds/hihat.wav"></audio>
     <audio data-key="68" src="sounds/KICk.wav"></audio>
     <audio data-key="70" src="sounds/ride.wav"></audio>
-    <script type="text/javascript">
-      window.addEventListener('keydown',function(e){
-        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-        if(!audio) return; // STOP THE FUNCTION FROM RUNNING IF THERE IS NOT AUDIO ELEMENT FOR THE PRESSED KEY
-        audio.play();
-        audio.currentTime = 0; //is going to rewind to the start
-        key.classList.toggle("playing");
-      });
-    </script>
+    
+    <script type="text/javascript" src="actions.js"></script>
   </body>
 </html>
